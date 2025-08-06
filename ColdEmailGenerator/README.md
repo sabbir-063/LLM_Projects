@@ -71,7 +71,7 @@ ColdEmailGenerator/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/yourusername/LLM_Projects.git
-   cd LLM_Projects/ColdEmailGenerator
+   cd LLM_Projects
    ```
 
 2. **Create virtual environment**
@@ -93,7 +93,7 @@ ColdEmailGenerator/
 
 5. **Run the application**
    ```bash
-   streamlit run main.py
+   streamlit run ColdEmailGenerator\main.py
    ```
 
 6. **Access the application**
@@ -194,37 +194,12 @@ email = llm.write_mail(job, links)
 # Returns: Professional cold email content
 ```
 
-## 🎨 Features in Detail
-
-### Smart Job Analysis
-- **Web Scraping**: Automatically extracts content from job posting URLs
-- **Content Cleaning**: Removes HTML tags, URLs, and special characters
-- **AI Extraction**: Uses LLM to identify job role, experience, skills, and description
-- **Error Handling**: Comprehensive validation for various edge cases
-
-### Portfolio Matching System
-- **Vector Database**: FAISS for fast similarity search
-- **Text Embeddings**: Sentence transformers for semantic understanding
-- **Intelligent Matching**: Finds most relevant portfolio items for job requirements
-- **Persistent Storage**: Saves embeddings for faster subsequent queries
-
-### Email Generation Engine
-- **Personalized Content**: Tailored emails based on job requirements
-- **Professional Tone**: Business-ready email formatting
-- **Portfolio Integration**: Automatically includes relevant portfolio links
-- **AI-Powered**: Uses Google Gemini AI for natural language generation
-
-### User Experience
-- **Beautiful UI**: Modern, responsive design with loading animations
-- **Real-time Feedback**: Progress indicators and status messages
-- **Error Handling**: User-friendly error messages and suggestions
-- **Responsive Design**: Works on desktop and mobile devices
 
 ## 🚀 Deployment
 
 ### Local Development
 ```bash
-streamlit run main.py
+streamlit run ColdEmailGenerator\main.py
 ```
 
 ### Streamlit Cloud Deployment
@@ -310,20 +285,6 @@ Error: FAISS index not found
 Solution: Delete vectorstore/ folder and restart the application
 ```
 
-### Performance Optimization
-
-**1. Large Portfolio Data**
-- Consider using a more efficient vector database
-- Implement pagination for large datasets
-
-**2. Slow Processing**
-- Optimize text cleaning functions
-- Use caching for repeated queries
-
-**3. Memory Usage**
-- Monitor FAISS index size
-- Implement cleanup for old embeddings
-
 ## 📊 Performance Metrics
 
 ### Current Performance
@@ -352,46 +313,6 @@ Solution: Delete vectorstore/ folder and restart the application
 - **Database Integration**: PostgreSQL for better data management
 - **API Endpoints**: RESTful API for external integrations
 
-## 🤝 Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-### Development Setup
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-### Code Style
-- Follow PEP 8 guidelines
-- Add type hints where appropriate
-- Include docstrings for functions
-- Write clear commit messages
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
-
-## 📞 Support
-
-### Getting Help
-- **Issues**: Create an issue on GitHub
-- **Documentation**: Check this README and inline code comments
-- **Community**: Join our discussion forum
-
-### Contact Information
-- **Developer**: Sabbir
-- **Email**: [your-email@example.com]
-- **GitHub**: [Your GitHub Profile]
-
-## 🙏 Acknowledgments
-
-- **Google Gemini AI** for providing the language model capabilities
-- **Streamlit** for the excellent web application framework
-- **LangChain** for the powerful LLM orchestration tools
-- **FAISS** for efficient vector similarity search
-- **Sentence Transformers** for text embedding capabilities
 
 ---
 

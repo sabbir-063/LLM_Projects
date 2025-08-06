@@ -13,36 +13,12 @@ This repository contains a curated selection of AI-powered applications built us
 
 An intelligent application that automatically generates personalized cold emails for job applications by analyzing job postings and matching them with relevant portfolio items.
 
-**Key Features:**
-- 🔍 **Smart Job Analysis**: Extracts job requirements, skills, and descriptions from web pages
-- 📝 **Personalized Email Generation**: Creates tailored emails using AI
-- 🎯 **Portfolio Matching**: Matches job requirements with relevant portfolio items
-- 🌐 **Web Scraping**: Automatically extracts content from job posting URLs
-- 💼 **Professional Templates**: Generates business-ready email content
 
 **Technologies:** Streamlit, LangChain, Google Gemini AI, FAISS Vector Database, Sentence Transformers
 
-**[View Project Details →](./ColdEmailGenerator/)**
-
+**[Live Link →](https://cold-mail-sabbir.streamlit.app/)**
 ---
 
-## 🛠 Technology Stack
-
-### Core Technologies
-- **Python 3.13+**: Primary programming language
-- **Streamlit**: Web application framework
-- **LangChain**: LLM orchestration framework
-- **Google Gemini AI**: Advanced language model integration
-
-### AI/ML Libraries
-- **FAISS**: Vector similarity search
-- **Sentence Transformers**: Text embedding generation
-- **Pandas**: Data manipulation and analysis
-
-### Development Tools
-- **Git**: Version control
-- **Virtual Environments**: Dependency management
-- **Requirements.txt**: Package management
 
 ## 📁 Project Structure
 
@@ -112,7 +88,7 @@ GOOGLE_API_KEY=your_google_gemini_api_key_here
 | Project | Status | Last Updated | Version |
 |---------|--------|--------------|---------|
 | [Cold Email Generator](./ColdEmailGenerator/) | ✅ Active | 2024-08-06 | v1.0.0 |
-| [Project 2] | 🚧 Coming Soon | - | - |
+| [MultiLingual RAG System] | 🚧 Coming Soon | - | - |
 | [Project 3] | 🚧 Coming Soon | - | - |
 
 ## 🎯 Project Goals
@@ -144,27 +120,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Developer**: Sabbir
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Portfolio**: [Your Portfolio Website]
-
-## 🙏 Acknowledgments
-
-- **Google Gemini AI** for providing the language model capabilities
-- **Streamlit** for the excellent web application framework
-- **LangChain** for the powerful LLM orchestration tools
-- **FAISS** for efficient vector similarity search
+- **Developer**: Mohammad Sabbir Musfique
+- **Email**: [sabbir.musfique01.com]
+- **LinkedIn**: [https://www.linkedin.com/in/msmusfique063/]
+- **Portfolio**: [https://sabbir-portfolio-five.vercel.app/]
 
 ---
 
 <div align="center">
 
 **Made with ❤️ and ☕ by Sabbir**
-
-[![Python](https://img.shields.io/badge/Python-3.13+-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.48.0-red.svg)](https://streamlit.io/)
-[![LangChain](https://img.shields.io/badge/LangChain-0.3.27-green.svg)](https://langchain.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 </div>
