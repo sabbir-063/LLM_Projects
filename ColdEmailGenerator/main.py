@@ -161,111 +161,113 @@ def create_streamlit_app(llm, portfolio, clean_text):
     # Add custom CSS for loading animation
     add_custom_css()
     
-    url_input = st.text_input("Enter a URL:", value="")
-    # gdfg
-    submit_button = st.button("Submit")
-
-    if submit_button:
-        # Validate URL format first
-        if not url_input.strip():
-            show_error_message("error", "Please enter a URL", "The URL field cannot be empty.")
-            return
+    # Create a form to handle both Enter key and button click
+    with st.form("email_generator_form"):
+        url_input = st.text_input("Enter a URL:", value="")
+        submit_button = st.form_submit_button("Submit")
         
-        if not validate_url(url_input):
-            show_error_message("error", "Invalid URL Format", 
-                            "Please enter a valid URL starting with http:// or https://")
-            return
-        
-        # Create a placeholder for the loading animation
-        loading_placeholder = st.empty()
-        
-        try:
-            # Show loading animation
-            with loading_placeholder.container():
-                show_loading_animation()
+        # This will trigger when user hits Enter OR clicks the button
+        if submit_button:
+            # Validate URL format first
+            if not url_input.strip():
+                show_error_message("error", "Please enter a URL", "The URL field cannot be empty.")
+                return
             
-            # Step 1: Check URL accessibility
-            with st.spinner("🔍 Checking URL accessibility..."):
-                is_accessible, accessibility_message = check_url_accessibility(url_input)
-                if not is_accessible:
-                    loading_placeholder.empty()
-                    show_error_message("error", "URL Not Accessible", accessibility_message)
-                    return
+            if not validate_url(url_input):
+                show_error_message("error", "Invalid URL Format", 
+                                "Please enter a valid URL starting with http:// or https://")
+                return
             
-            # Step 2: Loading webpage
-            with st.spinner("📥 Loading webpage..."):
-                try:
-                    loader = WebBaseLoader([url_input])
-                    documents = loader.load()
-                    
-                    if not documents:
+            # Create a placeholder for the loading animation
+            loading_placeholder = st.empty()
+            
+            try:
+                # Show loading animation
+                with loading_placeholder.container():
+                    show_loading_animation()
+                
+                # Step 1: Check URL accessibility
+                with st.spinner("🔍 Checking URL accessibility..."):
+                    is_accessible, accessibility_message = check_url_accessibility(url_input)
+                    if not is_accessible:
                         loading_placeholder.empty()
-                        show_error_message("error", "No Content Found", 
-                                        "The webpage appears to be empty or inaccessible.")
+                        show_error_message("error", "URL Not Accessible", accessibility_message)
                         return
-                    
-                    data = clean_text(documents[0].page_content)
-                    
-                    if not data or len(data.strip()) < 50:
-                        loading_placeholder.empty()
-                        show_error_message("warning", "Limited Content Found", 
-                                        "The webpage content seems too short to extract job information.")
-                        return
+                
+                # Step 2: Loading webpage
+                with st.spinner("📥 Loading webpage..."):
+                    try:
+                        loader = WebBaseLoader([url_input])
+                        documents = loader.load()
                         
-                except Exception as e:
-                    loading_placeholder.empty()
-                    if "404" in str(e).lower():
-                        show_error_message("error", "Page Not Found (404)", 
-                                        "The URL you provided doesn't exist or has been moved.")
-                    elif "403" in str(e).lower():
-                        show_error_message("error", "Access Forbidden (403)", 
-                                        "The website is blocking access to this page.")
-                    elif "timeout" in str(e).lower():
-                        show_error_message("error", "Request Timeout", 
-                                        "The website took too long to respond.")
-                    else:
-                        show_error_message("error", "Failed to Load Webpage", 
-                                        f"Error: {str(e)}")
-                    return
-            
-            # Step 3: Extracting job information
-            with st.spinner("🔍 Extracting job information..."):
-                try:
-                    jobs = llm.extract_jobs(data)
-                except Exception as e:
-                    loading_placeholder.empty()
-                    show_error_message("error", "Failed to Extract Job Information", 
-                                    f"Error processing the webpage content: {str(e)}")
-                    return
-            
-            # Clear loading animation
-            loading_placeholder.empty()
-            
-            # Step 4: Generate emails with progress
-            if jobs and len(jobs) > 0:
-                st.success(f"✅ Found {len(jobs)} job(s) to process")
-                
-                for i, job in enumerate(jobs, 1):
-                    with st.spinner(f"📧 Generating email {i}/{len(jobs)}..."):
-                        try:
-                            skills = job.get('skills', [])
-                            links = portfolio.query_links(skills)
-                            email = llm.write_mail(job, links)
+                        if not documents:
+                            loading_placeholder.empty()
+                            show_error_message("error", "No Content Found", 
+                                            "The webpage appears to be empty or inaccessible.")
+                            return
+                        
+                        data = clean_text(documents[0].page_content)
+                        
+                        if not data or len(data.strip()) < 50:
+                            loading_placeholder.empty()
+                            show_error_message("warning", "Limited Content Found", 
+                                            "The webpage content seems too short to extract job information.")
+                            return
                             
-                            # Display the email with a nice header
-                            st.markdown(f"### 📧 Generated Email {i}")
-                            st.code(email, language='markdown')
-                            st.divider()
-                        except Exception as e:
-                            st.error(f"❌ Failed to generate email {i}: {str(e)}")
-            else:
-                show_error_message("warning", "No Jobs Found", 
-                                "No job postings were detected on this webpage. Please try a different URL that contains job listings.")
+                    except Exception as e:
+                        loading_placeholder.empty()
+                        if "404" in str(e).lower():
+                            show_error_message("error", "Page Not Found (404)", 
+                                            "The URL you provided doesn't exist or has been moved.")
+                        elif "403" in str(e).lower():
+                            show_error_message("error", "Access Forbidden (403)", 
+                                            "The website is blocking access to this page.")
+                        elif "timeout" in str(e).lower():
+                            show_error_message("error", "Request Timeout", 
+                                            "The website took too long to respond.")
+                        else:
+                            show_error_message("error", "Failed to Load Webpage", 
+                                            f"Error: {str(e)}")
+                        return
                 
-        except Exception as e:
-            loading_placeholder.empty()
-            show_error_message("error", "Unexpected Error", 
-                            f"An unexpected error occurred: {str(e)}")
+                # Step 3: Extracting job information
+                with st.spinner("🔍 Extracting job information..."):
+                    try:
+                        jobs = llm.extract_jobs(data)
+                    except Exception as e:
+                        loading_placeholder.empty()
+                        show_error_message("error", "Failed to Extract Job Information", 
+                                        f"Error processing the webpage content: {str(e)}")
+                        return
+                
+                # Clear loading animation
+                loading_placeholder.empty()
+                
+                # Step 4: Generate emails with progress
+                if jobs and len(jobs) > 0:
+                    st.success(f"✅ Found {len(jobs)} job(s) to process")
+                    
+                    for i, job in enumerate(jobs, 1):
+                        with st.spinner(f"📧 Generating email {i}/{len(jobs)}..."):
+                            try:
+                                skills = job.get('skills', [])
+                                links = portfolio.query_links(skills)
+                                email = llm.write_mail(job, links)
+                                
+                                # Display the email with a nice header
+                                st.markdown(f"### 📧 Generated Email {i}")
+                                st.code(email, language='markdown')
+                                st.divider()
+                            except Exception as e:
+                                st.error(f"❌ Failed to generate email {i}: {str(e)}")
+                else:
+                    show_error_message("warning", "No Jobs Found", 
+                                    "No job postings were detected on this webpage. Please try a different URL that contains job listings.")
+                    
+            except Exception as e:
+                loading_placeholder.empty()
+                show_error_message("error", "Unexpected Error", 
+                                f"An unexpected error occurred: {str(e)}")
 
 
 if __name__ == "__main__":
