@@ -161,7 +161,8 @@ def create_streamlit_app(llm, portfolio, clean_text):
     # Add custom CSS for loading animation
     add_custom_css()
     
-    url_input = st.text_input("Enter a URL:", value="https://cmed.com.bd/jobs/junior-flutter-app-developer/")
+    url_input = st.text_input("Enter a URL:", value="")
+    # gdfg
     submit_button = st.button("Submit")
 
     if submit_button:
