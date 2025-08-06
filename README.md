@@ -7,10 +7,7 @@ A comprehensive collection of AI and Large Language Model (LLM) projects showcas
 ### 📧 [Cold Email Generator](./ColdEmailGenerator/)
 **AI-Powered Job Application Email Generator**
 
-An intelligent application that automatically generates personalized cold emails for job applications by analyzing job postings and matching them with relevant portfolio items.
-
-
-*Technologies:* Streamlit, LangChain, Google Gemini AI, FAISS Vector Database, Sentence Transformers
+*Technologies: Streamlit, LangChain, Google Gemini AI, FAISS Vector Database, Sentence Transformers*
 
 **[Live Link →](https://cold-mail-sabbir.streamlit.app/)**
 ---
