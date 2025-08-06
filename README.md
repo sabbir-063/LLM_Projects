@@ -2,10 +2,6 @@
 
 A comprehensive collection of AI and Large Language Model (LLM) projects showcasing practical applications of modern AI technologies.
 
-## 📋 Project Overview
-
-This repository contains a curated selection of AI-powered applications built using cutting-edge LLM technologies. Each project demonstrates real-world problem-solving capabilities and showcases different aspects of AI integration.
-
 ## 🚀 Featured Projects
 
 ### 📧 [Cold Email Generator](./ColdEmailGenerator/)
@@ -14,7 +10,7 @@ This repository contains a curated selection of AI-powered applications built us
 An intelligent application that automatically generates personalized cold emails for job applications by analyzing job postings and matching them with relevant portfolio items.
 
 
-**Technologies:** Streamlit, LangChain, Google Gemini AI, FAISS Vector Database, Sentence Transformers
+*Technologies:* Streamlit, LangChain, Google Gemini AI, FAISS Vector Database, Sentence Transformers
 
 **[Live Link →](https://cold-mail-sabbir.streamlit.app/)**
 ---
@@ -121,7 +117,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - **Developer**: Mohammad Sabbir Musfique
-- **Email**: [sabbir.musfique01.com]
+- **Email**: sabbir.musfique01.com
 - **LinkedIn**: [https://www.linkedin.com/in/msmusfique063/]
 - **Portfolio**: [https://sabbir-portfolio-five.vercel.app/]
 
