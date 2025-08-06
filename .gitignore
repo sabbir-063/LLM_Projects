@@ -1,4 +1,4 @@
 ColdEmailGenerator/.env
-ColdEmailGenerator/venv
-ColdEmailGenerator/vectorstore
-ColdEmailGenerator/__pycache__
+venv
+# vectorstore
+# __pycache__
