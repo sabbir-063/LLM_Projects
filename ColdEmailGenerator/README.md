@@ -2,6 +2,8 @@
 
 An intelligent AI-powered application that automatically generates personalized cold emails for job applications by analyzing job postings and matching them with relevant portfolio items.
 
+![Demo Screenshot](images/demo-2.png)
+
 ## 🎯 Project Overview
 
 The Cold Email Generator is a sophisticated web application that leverages the power of Large Language Models (LLMs) to streamline the job application process. It automatically extracts job requirements from web pages, analyzes the content, and generates personalized cold emails that highlight relevant portfolio items.
