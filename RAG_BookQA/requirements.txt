@@ -1,0 +1,23 @@
+python-dotenv>=1.0.1
+
+# LangChain core + integrations
+langchain>=0.2.11
+langchain-core>=0.2.36
+langchain-community>=0.2.10
+langchain-text-splitters>=0.2.2
+langchain-google-genai>=1.0.7
+
+# Google Generative AI SDK
+google-generativeai>=0.7.2
+
+# Vector store
+faiss-cpu>=1.8.0
+
+# PDF loading
+pypdf>=4.2.0
+
+# API
+fastapi>=0.111.0
+uvicorn>=0.30.1
+
+
